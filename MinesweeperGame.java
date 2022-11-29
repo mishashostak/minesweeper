@@ -38,6 +38,8 @@ public class MinesweeperGame {
      * 
      * @param inputRow The "y" coordinate of the selected square
      * @param inputColumn The "x" coordinate of the selected square
+     * 
+     * @return int - The boolean-based integer value of the game status
      */
     public int playerInteract(int inputRow, int inputColumn) {
         if (board[inputRow][inputColumn] == 9) {
@@ -166,9 +168,9 @@ public class MinesweeperGame {
     private void printBoard(int inputBoard[][]) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                System.out.print(inputBoard[i][j] + "   ");
+                System.out.printf("|%2d",inputBoard[i][j]);
             }
-            System.out.println();
+            System.out.printf("%s%n","|");
         }
     }
 
