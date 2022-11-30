@@ -7,27 +7,26 @@ import java.util.Scanner;
  * 
  * @version November 29, 2022
  */
-public class MinesweeperPlayer {
+public class MSPlayer {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("\nPlease enter three positive constants \n(the # of rows | the # of columns | the # of mines):");
+            System.out.println("\nPlease enter three positive integers \n(the # of rows | the # of columns | the # of mines):");
             int rows = sc.nextInt();
             int columns = sc.nextInt();
             int mines = sc.nextInt();
-            System.out.println("\nPlease note that mines are represented by the # 9 while -1 refers to 'hidden' spaces");
-            System.out.println("(1, 1) would be considered the top-left-most corner\n" +
-                "(# of columns, # of rows) would be considered the bottom-right-most corner\n");
-            
+            System.out.println("\nPLEASE NOTE:\nmines are represented as \"$\"");
+            System.out.println("(1, 1) is the top-left-most corner\n" +
+                "(length, height) is the bottom-right-most corner" + 
+            "\n");
             /* Starts the game */
             MinesweeperGame game = new MinesweeperGame(rows, columns, mines);
 
             while (true) {
                 System.out.println("\nPlease select a column (x) and row (y) to examine:");
-                
                 /* User selects square to interact with */
                 int inputColumn = sc.nextInt() - 1;
                 int inputRow = sc.nextInt() - 1;
-                /* y is local variable of the boolean-based integer returned by playerInteract(int, int) */
+                /* y is local variable of the boolean-styled integer returned by playerInteract(int, int) */
                 int y = game.playerInteract(inputRow, inputColumn); 
 
                 /* Response System: Win, Hit or Miss */
@@ -45,7 +44,6 @@ public class MinesweeperPlayer {
                 }
                 /* Continues if the game has not been completed */
                 if (y == 0) {
-                    System.out.println("\nHere is the board for reference. Play your next move wisely.\n");
                     game.getVisibleBoard();
                 }
             }
