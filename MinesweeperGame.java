@@ -46,10 +46,6 @@ public class MinesweeperGame {
         if (board[inputRow][inputColumn] == "$") {
             return 2;
         }
-        /* Check: "-" indicates it is blank */
-        else if (board[inputRow][inputColumn] == " ") {
-            blankAdjacents(inputRow, inputColumn);
-        }
         /* Check: " " indicates it has already been revealed and isn't numbered */
         else if (board[inputRow][inputColumn] == " ") {
             blankAdjacents(inputRow, inputColumn);
