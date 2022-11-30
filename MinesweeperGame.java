@@ -7,7 +7,7 @@
  * @version November 29, 2022
  */
 public class MinesweeperGame {
-    /* Instance variables to reset game characteristics when new Object is made */
+    // Instance variables to reset game characteristics when new Object is made 
     private int rows;
     private int columns;
     private int mines;
@@ -42,28 +42,28 @@ public class MinesweeperGame {
      * @return int - The boolean-styled integer value of the game status
      */
     public int playerInteract(int inputRow, int inputColumn) {
-        /* Check for no "$" (indicates a bomb) */
+        // Check for no "$" (indicates a bomb)
         if (board[inputRow][inputColumn] == "$") {
             return 2;
         }
-        /* Check: " " indicates it has already been revealed and isn't numbered */
+        // Check: " " indicates it has already been revealed and isn't numbered
         else if (board[inputRow][inputColumn] == " ") {
             blankAdjacents(inputRow, inputColumn);
         }
-        /* Return value of the numbered cell */
+        // Return value of the numbered cell
         else {
             visBoard[inputRow][inputColumn] = board[inputRow][inputColumn];
         }
-        /* Checks for a win, if they haven't won yet, then they need to keep playing */
+        // Checks for a win, if they haven't won yet, then they need to keep playing
         for (int i = 0; i< rows; i++) { 
             for (int j = 0; j < columns; j++) {
-                /* Looks through each coordinate that isn't a bomb */
+                // Looks through each coordinate that isn't a bomb 
                 if (board[i][j] != "$") {
-                    /* Checks for a win, if they haven't won yet, then they need to keep playing */
+                    // Checks for a win, if they haven't won yet, then they need to keep playing 
                     if (visBoard[i][j] == board[i][j]) {
                         visBoard[i][j] = board[i][j];
                     }
-                    /* No win will sustain gameplay, naturally */
+                    // No win will sustain gameplay, naturally 
                     else {
                         return 0;
                     }
@@ -80,17 +80,17 @@ public class MinesweeperGame {
      * @param x The column coordinate 
      */
     private void blankAdjacents(int y, int x){
-        /* Check for bounds */
+        // Check for bounds 
         if (x < 0 | x > columns-1 | y < 0 | y > rows-1) {
             return;
         }
-        /* Check if cell has already been processed to avoid throwing StackOverflowError */
+        // Check if cell has already been processed to avoid throwing StackOverflowError 
         else if(visBoard[y][x] == " ") return;
 
-        /* Stops if the cell is the bomb */
+        // Stops if the cell is the bomb 
         else if(board[y][x] == "$") return;
 
-        /* Check: "-" indicates it is blank */
+        // Check: " " indicates it is blank 
         else if(board[y][x] == " ") {
             visBoard[y][x] = board[y][x];
             /* Recursion */
@@ -104,7 +104,7 @@ public class MinesweeperGame {
             blankAdjacents(y+1, x-1);  /*down-right*/
             return;
         }
-        /* Reveals cell if the cell is numbered */
+        // Reveals cell if the cell is numbered 
         else {
             visBoard[y][x] = board[y][x];
             return;
@@ -165,7 +165,7 @@ public class MinesweeperGame {
      * @return String[][] - The initial board that will be used to play
      */
     private String[][] populateBoard(String inputBoard[][]) {
-        /* This section assigns each space of number based on the surrounding mines. */
+        // This section assigns each space of number based on the surrounding mines. 
         while (mines != 0) {
             int a = (int)(Math.random()*rows);
             int b = (int)(Math.random()*columns);
@@ -175,7 +175,7 @@ public class MinesweeperGame {
             }
         }
 
-        /* Assigns each space of number based on the surrounding mines */
+        // Assigns each space of number based on the surrounding mines 
         for(int i = 0; i < rows; i++) { 
             for (int j = 0; j < columns; j++) {
                 if (inputBoard[i][j] != "$") {
