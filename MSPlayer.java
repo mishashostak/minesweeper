@@ -8,6 +8,10 @@ import java.util.Scanner;
  * @version November 29, 2022
  */
 public class MSPlayer {
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
             System.out.println("\nPlease enter three positive integers \n(the # of rows | the # of columns | the # of mines):");
