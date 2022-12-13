@@ -220,7 +220,7 @@ public class MinesweeperGame {
                             tempMines += 1;
                         }
                     }
-                    /* Keep blank cells as "-" */
+                    // Keep blank cells as "-" 
                     if (tempMines != 0) {
                         inputBoard[i][j] = Integer.toString(tempMines);
                     }
